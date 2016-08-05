@@ -29,3 +29,4 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signup', userCtrl.newUser)
+app.post('/login', userCtrl.login)

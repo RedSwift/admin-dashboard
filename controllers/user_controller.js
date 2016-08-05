@@ -15,6 +15,21 @@ const newUser = function (req, res) {
   }
 }
 
+const login = function (req, res) {
+  if (!req.body.email || !req.body.password) res.status(401).json('Invalid email or password')
+  else {
+    User.findOne({email: req.body.email}, function (err, user) {
+      if (err) return res.status(401).json(`Error occured: ${err}`)
+
+      user.authenticate(req.body.password, (err, isMatch) => {
+        if (err || !isMatch) return res.status(401).json(`Invalid email or password`)
+        return res.status(200).json(`logging you in`)
+      })
+    })
+  }
+}
+
 module.exports = {
-  newUser: newUser
+  newUser: newUser,
+  login: login
 }

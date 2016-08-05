@@ -12,7 +12,7 @@ describe('POST /signup', () => {
       .set('Accept', 'application/json')
       .send({
         name: 'Dominic',
-        email: 'testing@gmail.com',
+        email: 'tester@gmail.com',
         password: '1234',
         password_confirmation: '1234',
         signup_token: process.env.SIGNUP_TOKEN
@@ -24,9 +24,26 @@ describe('POST /signup', () => {
       })
   })
   after(function (done) {
-    User.remove({email: 'testing@gmail.com'}, function (err, res) {
+    User.remove({email: 'tester@gmail.com'}, function (err, res) {
       if (err) console.log(err)
       else done()
     })
+  })
+})
+
+describe('POST /login', () => {
+  it('should allow valid users to login', (done) => {
+    api.post('/login')
+      .set('Accept', 'application/json')
+      .send({
+        email: process.env.EMAIL,
+        password: process.env.PASSWORD
+      })
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.status).to.eq(200)
+        expect(res.body).to.eq('logging you in')
+        done()
+      })
   })
 })
