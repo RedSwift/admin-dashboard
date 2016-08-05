@@ -2,10 +2,11 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 const morgan = require('morgan')
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+require('dotenv').config()
 
-// mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({

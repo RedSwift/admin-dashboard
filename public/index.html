@@ -3,7 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Admin Dashboard</title>
+    <script src="angular/angular.min.js" charset="utf-8"></script>
+    <script src="core.js" charset="utf-8"></script>
+    <script src="angular-material/angular-material.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="angular-material/angular-material.css">
+    <link rel="stylesheet" href="styles/master.css">
   </head>
-  <body>
+  <body ng-app="adminApp">
+    <div layout="column" layout-align="center center" class="md-padding">
+      <h1 flex class="md-padding text-center">Welcome!</h1>
+      <form>
+        <md-input-container layout="column">
+          Username: <input type="text">
+          <br>
+          Password: <input type="text">
+          <br>
+          <button>Login</button>
+        </md-input-container>
+      </form>
+    </div>
   </body>
 </html>
