@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const userCtrl = require('./controllers/user_controller')
 require('dotenv').config()
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -26,3 +27,5 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
+
+app.post('/signup', userCtrl.newUser)

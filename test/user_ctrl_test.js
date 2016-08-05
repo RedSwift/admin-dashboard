@@ -1,0 +1,32 @@
+/* globals after describe it */
+const expect = require('chai').expect
+const supertest = require('supertest')
+require('../server')
+const api = supertest(`http://localhost:3000`)
+const User = require('../models/user')
+
+describe('POST /signup', () => {
+  it('should allow post for new user', function (done) {
+    this.timeout(5000)
+    api.post('/signup')
+      .set('Accept', 'application/json')
+      .send({
+        name: 'Dominic',
+        email: 'testing@gmail.com',
+        password: '1234',
+        password_confirmation: '1234',
+        signup_token: process.env.SIGNUP_TOKEN
+      })
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.status).to.eq(201)
+        done()
+      })
+  })
+  after(function (done) {
+    User.remove({email: 'testing@gmail.com'}, function (err, res) {
+      if (err) console.log(err)
+      else done()
+    })
+  })
+})
