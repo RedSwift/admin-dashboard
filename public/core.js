@@ -1,5 +1,8 @@
 angular.module('adminApp', ['ngMaterial', 'ngRoute'])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('pink')
+      .accentPalette('blue')
     $routeProvider
     .when('/', {
       template: '<login></login>'
@@ -8,7 +11,10 @@ angular.module('adminApp', ['ngMaterial', 'ngRoute'])
       template: '<sign-up></sign-up>'
     })
     .when('/home', {
-      template: '<h1> Home Page </h1>'
+      template: '<home></home>'
+    })
+    .when('/attendance', {
+      template: '<attend-main></attend-main>'
     })
     .otherwise({
       redirectTo: '/'

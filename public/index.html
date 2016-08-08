@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="angular-material/angular-material.css">
+    <link rel="stylesheet" href="styles/master.css">
     <script src="angular/angular.min.js" charset="utf-8"></script>
     <script src="core.js" charset="utf-8"></script>
     <script src="angular-material/angular-material.min.js" charset="utf-8"></script>
@@ -11,10 +13,9 @@
     <script src="angular-route/angular-route.min.js" charset="utf-8"></script>
     <script src="features/login/login.component.js" charset="utf-8"></script>
     <script src="features/signup/signup.component.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="angular-material/angular-material.css">
-    <link rel="stylesheet" href="styles/master.css">
+    <script src="features/home/home.component.js" charset="utf-8"></script>
   </head>
-  <body ng-app="adminApp">
+  <body ng-app="adminApp" ng-cloak>
     <ng-view></ng-view>
   </body>
 </html>
