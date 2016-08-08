@@ -1,1 +1,1 @@
-angular.module('adminApp', [])
+angular.module('adminApp', ['ngMaterial'])
