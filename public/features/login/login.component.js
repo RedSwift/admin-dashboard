@@ -1,7 +1,7 @@
 angular.module('adminApp')
   .component('login', {
     templateUrl: 'features/login/login.template.html',
-    controller: function ($scope, $http) {
+    controller: function ($scope, $http, $window) {
       this.login = function () {
         $http({
           url: 'http://localhost:3000/login',
@@ -11,7 +11,7 @@ angular.module('adminApp')
             password: this.password
           }
         }).then(function (res) {
-          console.log('success', res)
+          $window.location.href = 'http://localhost:3000/#/haha'
         }, function (err) {
           console.log('error', err)
         })
