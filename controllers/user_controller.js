@@ -23,7 +23,7 @@ const login = function (req, res) {
 
       user.authenticate(req.body.password, (err, isMatch) => {
         if (err || !isMatch) return res.status(401).json(`Invalid email or password`)
-        return res.status(200).json(`logging you in`)
+        return res.status(200).json({message: 'logging you in', auth_token: user.auth_token})
       })
     })
   }

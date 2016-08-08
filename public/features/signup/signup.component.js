@@ -17,7 +17,7 @@ angular.module('adminApp')
               signup_token: this.token
             }
           }).then(function (res) {
-            console.log('success', res)
+            $window.location.href = 'http://localhost:3000/#/login'
           }, function (err) {
             console.log('error', err)
           })
