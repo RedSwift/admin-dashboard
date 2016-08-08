@@ -4,8 +4,11 @@ angular.module('adminApp', ['ngMaterial', 'ngRoute'])
     .when('/', {
       template: '<login></login>'
     })
-    .when('/haha', {
-      template: '<h1> haha </h1>'
+    .when('/signup', {
+      template: '<sign-up></sign-up>'
+    })
+    .when('/home', {
+      template: '<h1> Home Page </h1>'
     })
     .otherwise({
       redirectTo: '/'

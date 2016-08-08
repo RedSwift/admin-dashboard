@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<div layout="column" layout-align="center center" class="md-paddin">
+  <h1 flex class="md-padding text-center">Sign Up</h1>
+  <h3>{{ $ctrl.error }}</h3>
+  <md-input-container>
+    <label>Name</label>
+    <input ng-model="$ctrl.name">
+  </md-input-container>
+  <md-input-container>
+    <label>Email</label>
+    <input ng-model="$ctrl.email">
+  </md-input-container>
+  <md-input-container>
+    <label>Password</label>
+    <input ng-model="$ctrl.password" type="password">
+  </md-input-container>
+  <md-input-container>
+    <label>Password Confirmation</label>
+    <input ng-model="$ctrl.confirm" type="password">
+  </md-input-container>
+  <md-input-container>
+    <label>Token</label>
+    <input ng-model="$ctrl.token">
+  </md-input-container>
+  <md-button class="md-raised md-primary" ng-click="$ctrl.signup()">Login</md-button>
+</div>

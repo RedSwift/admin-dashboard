@@ -1,7 +1,7 @@
 const User = require('../models/user')
 
 const newUser = function (req, res) {
-  if (!req.body.signup_token || req.body.signup_token !== process.env.SIGNUP_TOKEN) return res.status(401).json(`Invalid Signup Token`)
+  if (!req.body.signup_token || req.body.signup_token !== process.env.SIGNUP_TOKEN) return res.status(401).json({message: `Invalid Signup Token`})
   else {
     let makeUser = new User()
     makeUser.name = req.body.name

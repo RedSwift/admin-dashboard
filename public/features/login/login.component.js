@@ -11,7 +11,7 @@ angular.module('adminApp')
             password: this.password
           }
         }).then(function (res) {
-          $window.location.href = 'http://localhost:3000/#/haha'
+          $window.location.href = 'http://localhost:3000/#/home'
         }, function (err) {
           console.log('error', err)
         })
