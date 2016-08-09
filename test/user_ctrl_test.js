@@ -42,7 +42,6 @@ describe('POST /login', () => {
       .end((err, res) => {
         expect(err).to.be.null
         expect(res.status).to.eq(200)
-        console.log(res.body)
         expect(res.body.message).to.eq('logging you in')
         done()
       })
