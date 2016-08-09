@@ -3,12 +3,28 @@ const expect = require('chai').expect
 const supertest = require('supertest')
 require('../server')
 const api = supertest(`http://localhost:3000`)
+const Person = require('../models/person.js')
+
+let peopleCount
+Person.count({}, (err, count) => {
+  if (err) console.log(err)
+  else peopleCount = count
+})
 
 describe('GET, SHOW, POST, DELETE, PUT Person', () => {
   let id
-  it('should GET all people')
-  it('should allow POST for new person', function (done) {
+  it('should GET all people', function (done) {
     this.timeout(5000)
+    api.get('/people')
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.status).to.eq(200)
+        expect(res.body.length).to.eq(peopleCount)
+        done()
+      })
+  })
+  it('should allow POST for new person', (done) => {
     api.post('/person/new')
     .set('Accept', 'application/json')
     .send({

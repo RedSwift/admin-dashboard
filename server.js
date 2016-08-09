@@ -38,5 +38,6 @@ app.get('/', (req, res) => {
 app.post('/signup', userCtrl.newUser)
 app.post('/login', userCtrl.login)
 
+app.get('/people', personCtrl.getPeople)
 app.post('/person/new', personCtrl.newPerson)
 app.delete('/person/:id', personCtrl.deletePerson)

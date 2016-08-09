@@ -1,9 +1,16 @@
 const Person = require('../models/person.js')
 
+let getPeople = function (req, res) {
+  Person.find({}, (err, people) => {
+    if (err) return res.status(401).json({error: err})
+    else res.status(200).json(people)
+  })
+}
+
 let newPerson = function (req, res) {
   if (!req.body.name) return res.status(401).json({error: 'Name cannot be empty!'})
   Person.findOne({name: req.body.name}, function (err, person) {
-    if (err) console.log(err)
+    if (err) return res.status(401).json({error: err})
     if (person) return res.status(401).json({error: 'Name already exists'})
     else {
       let makePerson = new Person()
@@ -26,5 +33,6 @@ let deletePerson = function (req, res) {
 
 module.exports = {
   newPerson: newPerson,
-  deletePerson: deletePerson
+  deletePerson: deletePerson,
+  getPeople: getPeople
 }
