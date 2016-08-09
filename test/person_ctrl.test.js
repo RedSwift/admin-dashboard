@@ -38,8 +38,29 @@ describe('GET, SHOW, POST, DELETE, PUT Person', () => {
       done()
     })
   })
-  it('should SHOW a person')
-  it('should allow EDIT for a person')
+  it('should SHOW a person', (done) => {
+    api.get('/person/' + id)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.status).to.eq(200)
+        expect(res.body.name).to.eq('Tester')
+        done()
+      })
+  })
+  it('should allow put for a person', (done) => {
+    api.put('/person/' + id)
+      .set('Accept', 'application/json')
+      .send({
+        name: 'Not Tester'
+      })
+      .end((err, res) => {
+        expect(err).to.be.null
+        expect(res.status).to.eq(201)
+        expect(res.body.name).to.eq('Not Tester')
+        done()
+      })
+  })
   it('should allow DELETE for a person', (done) => {
     api.delete('/person/' + id)
       .set('Accept', 'application/json')

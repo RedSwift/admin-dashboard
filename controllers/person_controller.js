@@ -24,6 +24,26 @@ let newPerson = function (req, res) {
   })
 }
 
+let editPerson = function (req, res) {
+  Person.findOne({_id: req.params.id}, (err, person) => {
+    if (err) return res.status(401).json({error: err})
+    else {
+      if (!req.body.name) return res.status(401).json({error: 'Name cannot be empty!'})
+      Person.findOne({name: req.body.name}, (err, found) => {
+        if (err) return res.status(401).json({error: 'Name already exists'})
+        else {
+          person.name = req.body.name
+
+          person.save((err, result) => {
+            if (err) return res.status(401).json({error: err})
+            else res.status(201).json(result)
+          })
+        }
+      })
+    }
+  })
+}
+
 let deletePerson = function (req, res) {
   Person.remove({_id: req.params.id}, function (err) {
     if (err) res.status(401).json({error: err})
@@ -34,5 +54,6 @@ let deletePerson = function (req, res) {
 module.exports = {
   newPerson: newPerson,
   deletePerson: deletePerson,
-  getPeople: getPeople
+  getPeople: getPeople,
+  editPerson: editPerson
 }

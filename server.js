@@ -40,4 +40,5 @@ app.post('/login', userCtrl.login)
 
 app.get('/people', personCtrl.getPeople)
 app.post('/person/new', personCtrl.newPerson)
+app.put('/person/:id', personCtrl.editPerson)
 app.delete('/person/:id', personCtrl.deletePerson)
