@@ -39,3 +39,4 @@ app.post('/signup', userCtrl.newUser)
 app.post('/login', userCtrl.login)
 
 app.post('/person/new', personCtrl.newPerson)
+app.delete('/person/:id', personCtrl.deletePerson)
