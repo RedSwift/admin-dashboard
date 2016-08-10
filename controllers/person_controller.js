@@ -7,6 +7,13 @@ let getPeople = function (req, res) {
   })
 }
 
+let getPerson = function (req, res) {
+  Person.findOne({_id: req.params.id}, (err, person) => {
+    if (err) return res.status(401).json({error: err})
+    else res.status(200).json(person)
+  })
+}
+
 let newPerson = function (req, res) {
   if (!req.body.name) return res.status(401).json({error: 'Name cannot be empty!'})
   Person.findOne({name: req.body.name}, function (err, person) {
@@ -55,5 +62,6 @@ module.exports = {
   newPerson: newPerson,
   deletePerson: deletePerson,
   getPeople: getPeople,
-  editPerson: editPerson
+  editPerson: editPerson,
+  getPerson: getPerson
 }

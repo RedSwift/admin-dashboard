@@ -39,6 +39,7 @@ app.post('/api/signup', userCtrl.newUser)
 app.post('/api/login', userCtrl.login)
 
 app.get('/api/people', personCtrl.getPeople)
+app.get('/api/person/:id', personCtrl.getPerson)
 app.post('/api/person/new', personCtrl.newPerson)
 app.put('/api/person/:id', personCtrl.editPerson)
 app.delete('/api/person/:id', personCtrl.deletePerson)

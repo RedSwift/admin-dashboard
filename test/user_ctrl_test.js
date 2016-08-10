@@ -8,7 +8,7 @@ const User = require('../models/user')
 describe('POST /signup', () => {
   it('should allow post for new user', function (done) {
     this.timeout(5000)
-    api.post('/signup')
+    api.post('/api/signup')
       .set('Accept', 'application/json')
       .send({
         name: 'Dominic',
@@ -33,7 +33,7 @@ describe('POST /signup', () => {
 
 describe('POST /login', () => {
   it('should allow valid users to login', (done) => {
-    api.post('/login')
+    api.post('/api/login')
       .set('Accept', 'application/json')
       .send({
         email: process.env.EMAIL,

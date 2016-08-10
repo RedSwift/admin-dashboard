@@ -15,7 +15,7 @@ describe('GET, SHOW, POST, DELETE, PUT Person', () => {
   let id
   it('should GET all people', function (done) {
     this.timeout(5000)
-    api.get('/people')
+    api.get('/api/people')
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
@@ -25,7 +25,7 @@ describe('GET, SHOW, POST, DELETE, PUT Person', () => {
       })
   })
   it('should allow POST for new person', (done) => {
-    api.post('/person/new')
+    api.post('/api/person/new')
     .set('Accept', 'application/json')
     .send({
       name: 'Tester'
@@ -39,7 +39,7 @@ describe('GET, SHOW, POST, DELETE, PUT Person', () => {
     })
   })
   it('should SHOW a person', (done) => {
-    api.get('/person/' + id)
+    api.get('/api/person/' + id)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
@@ -49,7 +49,7 @@ describe('GET, SHOW, POST, DELETE, PUT Person', () => {
       })
   })
   it('should allow put for a person', (done) => {
-    api.put('/person/' + id)
+    api.put('/api/person/' + id)
       .set('Accept', 'application/json')
       .send({
         name: 'Not Tester'
@@ -62,7 +62,7 @@ describe('GET, SHOW, POST, DELETE, PUT Person', () => {
       })
   })
   it('should allow DELETE for a person', (done) => {
-    api.delete('/person/' + id)
+    api.delete('/api/person/' + id)
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(err).to.be.null
