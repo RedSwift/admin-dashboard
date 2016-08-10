@@ -4,7 +4,7 @@ angular.module('adminApp')
     templateUrl: 'features/person/people.template.html',
     controller: function ($http) {
       $http({
-        url: 'http://localhost:3000/people',
+        url: 'http://localhost:3000/api/people',
         method: 'GET'
       }).then((res) => {
         this.people = res.data

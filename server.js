@@ -35,10 +35,10 @@ app.get('/', (req, res) => {
   res.sendFile('index.html')
 })
 
-app.post('/signup', userCtrl.newUser)
-app.post('/login', userCtrl.login)
+app.post('/api/signup', userCtrl.newUser)
+app.post('/api/login', userCtrl.login)
 
-app.get('/people', personCtrl.getPeople)
-app.post('/person/new', personCtrl.newPerson)
-app.put('/person/:id', personCtrl.editPerson)
-app.delete('/person/:id', personCtrl.deletePerson)
+app.get('/api/people', personCtrl.getPeople)
+app.post('/api/person/new', personCtrl.newPerson)
+app.put('/api/person/:id', personCtrl.editPerson)
+app.delete('/api/person/:id', personCtrl.deletePerson)

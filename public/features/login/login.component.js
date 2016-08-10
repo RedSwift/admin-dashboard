@@ -6,7 +6,7 @@ angular.module('adminApp')
       this.login = function () {
         userEmail = this.email
         $http({
-          url: 'http://localhost:3000/login',
+          url: 'http://localhost:3000/api/login',
           method: 'POST',
           data: {
             email: this.email,

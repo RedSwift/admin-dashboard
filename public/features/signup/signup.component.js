@@ -8,7 +8,7 @@ angular.module('adminApp')
           return
         } else {
           $http({
-            url: 'http://localhost:3000/signup',
+            url: 'http://localhost:3000/api/signup',
             method: 'POST',
             data: {
               name: this.name,
