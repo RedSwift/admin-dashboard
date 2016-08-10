@@ -25,10 +25,10 @@
         <label>Date</label>
         <input ng-model="$ctrl.date">
       </md-input-container>
-      <md-list>
+      <md-list ng-repeat="person in $ctrl.people track by $index">
           <md-list-item>
-            <span>Dominic</span>
-            <md-radio-group layout="row" class="marginLeft">
+            <label ng-value="{{person.name}}">{{person.name}}</label>
+            <md-radio-group layout="row" class="marginLeft" ng-model="$ctrl.score[$index]">
               <md-radio-button value="yes">Yes</md-radio-button>
               <md-radio-button value="no">No</md-radio-button>
               <md-radio-button value="partial">Partial</md-radio-button>
@@ -36,10 +36,11 @@
             </md-radio-group>
             <md-input-container class="marginLeft" flex>
               <label>Notes</label>
-              <input ng-model="$ctrl.notes">
+              <input ng-model="$ctrl.notes[$index]">
             </md-input-container>
           </md-list-item>
       </md-list>
+      <md-button class="blue md-primary" ng-click="$ctrl.newAttend()">Submit Attendance</md-button>
     </md-content>
   </div>
 </div>

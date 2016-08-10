@@ -5,8 +5,6 @@ let newAttend = (req, res) => {
   if (!req.body.date) return res.status(401).json({error: 'Date must not be empty'})
   if (!req.body.people) return res.status(401).json({error: 'Must have name and attendance'})
 
-  console.log(req.body.people)
-
   var makeAttend = new Attend()
   makeAttend.date = req.body.date
 

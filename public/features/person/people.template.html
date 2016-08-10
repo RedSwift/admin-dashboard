@@ -5,4 +5,11 @@
   <a href="http://localhost:3000/#/person/edit/{{person._id}}">Edit</a>
   <md-button class="blue md-primary" ng-click="$ctrl.deletePerson(person._id)">Delete</md-button>
 </h3>
-<a href="http://localhost:3000/#/person/new">New person</a>
+<hr>
+<span>Create New Person</span>
+<br>
+<md-input-container>
+  <label>Name</label>
+  <input type="text" ng-model="$ctrl.name">
+</md-input-container>
+<md-button class="blue md-primary" ng-click="$ctrl.newPerson()">New Person</md-button>

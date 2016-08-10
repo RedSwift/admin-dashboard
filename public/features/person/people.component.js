@@ -2,7 +2,7 @@
 angular.module('adminApp')
   .component('people', {
     templateUrl: 'features/person/people.template.html',
-    controller: function ($http, $window) {
+    controller: function ($http, $window, $scope) {
       $http({
         url: 'http://localhost:3000/api/people',
         method: 'GET'
@@ -11,6 +11,19 @@ angular.module('adminApp')
       }, (err) => {
         if (err) alert(`error: unable to connect to server`)
       })
+
+      this.newPerson = () => {
+        $http({
+          url: 'http://localhost:3000/api/person/new',
+          method: 'POST',
+          data: {
+            name: this.name
+          }
+        }).then((res) => {
+          this.people.push(res.data)
+        })
+      }
+
       this.deletePerson = (id) => {
         $http({
           url: 'http://localhost:3000/api/person/' + id,
