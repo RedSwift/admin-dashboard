@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<h1>All the Attendance</h1>
+<hr>
+<div ng-repeat="attend in $ctrl.attend track by $index">
+  <h3>{{attend.date}}</h3>
+  <div ng-repeat="singleAttend in attend.people | orderBy: '-score'">
+    {{singleAttend.name}}
+    {{singleAttend.score}}
+    {{singleAttend.notes}}
+  </div>
+  <br>
+</div>

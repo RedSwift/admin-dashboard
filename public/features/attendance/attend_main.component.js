@@ -2,6 +2,7 @@ angular.module('adminApp')
   .component('attendMain', {
     templateUrl: 'features/attendance/attend_main.template.html',
     controller: function ($http, $window, $scope) {
+      this.notes = ''
       $http({
         method: 'GET',
         url: 'http://localhost:3000/api/people'
