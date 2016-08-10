@@ -2,4 +2,6 @@
 <h1>List of people</h1>
 <h3 ng-repeat="person in $ctrl.people">
   {{person.name}}
+  <a href="http://localhost:3000/#/person/edit/{{person._id}}">Edit</a>
 </h3>
+<a href="http://localhost:3000/#/person/new">New person</a>

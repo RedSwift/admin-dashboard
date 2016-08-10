@@ -1,3 +1,4 @@
+/* globals angular */
 angular.module('adminApp', ['ngMaterial', 'ngRoute'])
   .config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
     $mdThemingProvider.theme('default')
@@ -21,6 +22,9 @@ angular.module('adminApp', ['ngMaterial', 'ngRoute'])
     })
     .when('/person/new', {
       template: '<new-person></new-person>'
+    })
+    .when('/person/edit/:id', {
+      template: '<edit-person></edit-person>'
     })
     .otherwise({
       redirectTo: '/'
