@@ -7,7 +7,7 @@ const attendSchema = new mongoose.Schema({
     name: String,
     score: String,
     notes: String,
-    person: {type: mongoose.Schema.Types.objectId, ref: 'Person'}
+    person: {type: mongoose.Schema.ObjectId, ref: 'Person'}
   }]
 })
 

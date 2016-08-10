@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 // const browserSync = require('browser-sync')
 const userCtrl = require('./controllers/user_controller')
 const personCtrl = require('./controllers/person_controller')
+const attendCtrl = require('./controllers/attendance_controller')
 require('dotenv').config()
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -43,3 +44,5 @@ app.get('/api/person/:id', personCtrl.getPerson)
 app.post('/api/person/new', personCtrl.newPerson)
 app.put('/api/person/:id', personCtrl.editPerson)
 app.delete('/api/person/:id', personCtrl.deletePerson)
+
+app.post('/api/attendance/new', attendCtrl.newAttend)
