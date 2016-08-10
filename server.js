@@ -45,4 +45,5 @@ app.post('/api/person/new', personCtrl.newPerson)
 app.put('/api/person/:id', personCtrl.editPerson)
 app.delete('/api/person/:id', personCtrl.deletePerson)
 
+app.get('/api/attendance', attendCtrl.getAttend)
 app.post('/api/attendance/new', attendCtrl.newAttend)
