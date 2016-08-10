@@ -22,11 +22,11 @@ app.use(express.static(__dirname + '/bower_components'))
 app.use(morgan('dev'))
 
 app.listen(port, () => {
-  browserSync({
-    proxy: 'localhost:' + port,
-    files: ['public/**/*.{js,css,html}'],
-    open: false
-  })
+  // browserSync({
+  //   proxy: 'localhost:' + port,
+  //   files: ['public/**/*.{js,css,html}'],
+  //   open: false
+  // })
   console.log(`Listening on port: ${port}`)
 })
 

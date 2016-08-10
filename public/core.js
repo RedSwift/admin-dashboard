@@ -16,6 +16,12 @@ angular.module('adminApp', ['ngMaterial', 'ngRoute'])
     .when('/attendance', {
       template: '<attend-main></attend-main>'
     })
+    .when('/people', {
+      template: '<people></people>'
+    })
+    .when('/person/new', {
+      template: '<new-person></new-person>'
+    })
     .otherwise({
       redirectTo: '/'
     })
