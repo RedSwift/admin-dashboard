@@ -39,6 +39,29 @@ let newAttend = (req, res) => {
   }
 }
 
+let updateAttend = function (req, res) {
+  Attend.findOne({_id: req.params.id}, (err, attend) => {
+    if (err) return res.status(401).json({error: err})
+    if (!req.body.date) return res.status(401).json({error: 'Date cannot be blank!'})
+    else {
+      if (req.body.date) attend.date = req.body.date
+
+      var counter = req.body.people.length
+      for (let i = 0; i < req.body.people.length; i++) {
+        counter--
+        if (req.body.people[i].score) attend.people[i].score = req.body.people[i].score
+        if (req.body.people[i].notes) attend.people[i].notes = req.body.people[i].notes
+      }
+      if (counter === 0) {
+        attend.save((err, result) => {
+          if (err) return res.status(401).json({error: err})
+          else return res.status(201).json(result)
+        })
+      }
+    }
+  })
+}
+
 let getPersonAttend = function (req, res) {
   Attend.find({'people.person': req.params.id}, (err, personAttend) => {
     if (err) return res.status(401).json({error: err})
@@ -66,5 +89,6 @@ let getPersonAttend = function (req, res) {
 module.exports = {
   newAttend: newAttend,
   getAttend: getAttend,
+  updateAttend: updateAttend,
   getPersonAttend: getPersonAttend
 }

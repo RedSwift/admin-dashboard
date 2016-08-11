@@ -12,7 +12,6 @@ angular.module('adminApp')
         }
       }).then((res) => {
         this.person = res.data
-        console.log(res.data)
       }, (err) => {
         if (err) alert('Error connecting to server')
       })

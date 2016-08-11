@@ -57,6 +57,34 @@ describe('Valid actions with Attendance', () => {
         })
     })
   })
+  context('PUT /api/attendance/:id', () => {
+    it(`should update attendance`, (done) => {
+      api.put('/api/attendance/' + id)
+        .set('Accept', 'application/json')
+        .set('email', process.env.EMAIL)
+        .set('auth_token', process.env.AUTH_TOKEN)
+        .send({
+          date: '10-Aug-16',
+          people: [{
+            name: 'Dominic',
+            score: 'No',
+            notes: 'Testing only'
+          }, {
+            name: 'William',
+            score: 'Yes',
+            notes: 'More testing'
+          }]
+        })
+        .end((err, res) => {
+          expect(err).to.be.null
+          expect(res.status).to.eq(201)
+          expect(res.body.date).to.eq('10-Aug-16')
+          expect(res.body.people[0].notes).to.eq('Testing only')
+          expect(res.body.people[1].notes).to.eq('More testing')
+          done()
+        })
+    })
+  })
   context('SHOW /api/attendance/person/:id', () => {
     it(`should show one person's attendance`, (done) => {
       var personAttendCount

@@ -41,4 +41,5 @@ app.delete('/api/person/:id', userCtrl.loggedIn, personCtrl.deletePerson)
 
 app.get('/api/attendance', userCtrl.loggedIn, attendCtrl.getAttend)
 app.post('/api/attendance/new', userCtrl.loggedIn, attendCtrl.newAttend)
+app.put('/api/attendance/:id', userCtrl.loggedIn, attendCtrl.updateAttend)
 app.get('/api/attendance/person/:id', userCtrl.loggedIn, attendCtrl.getPersonAttend)
