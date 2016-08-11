@@ -39,7 +39,15 @@ let newAttend = (req, res) => {
   }
 }
 
+let getPersonAttend = function (req, res) {
+  Attend.find({'people.person': req.params.id}, (err, personAttend) => {
+    if (err) return res.status(401).json({error: err})
+    else res.status(200).json(personAttend)
+  })
+}
+
 module.exports = {
   newAttend: newAttend,
-  getAttend: getAttend
+  getAttend: getAttend,
+  getPersonAttend: getPersonAttend
 }

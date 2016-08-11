@@ -4,6 +4,7 @@ const supertest = require('supertest')
 require('../server')
 const api = supertest(`http://localhost:3000`)
 const Attend = require('../models/attendance.js')
+// var ObjectId = require('mongoose').Types.ObjectId
 
 var attendCount
 Attend.count({}, (err, count) => {
@@ -52,6 +53,25 @@ describe('Valid actions with Attendance', () => {
           expect(res.body.date).to.eq('08-Aug-16')
           id = res.body._id
           expect(res.body.people.length).to.eq(2)
+          done()
+        })
+    })
+  })
+  context('SHOW /api/attendance/person/:id', () => {
+    it(`should show one person's attendance`, (done) => {
+      var personAttendCount
+      Attend.count({'people.person': process.env.TEST_ID}, (err, count) => {
+        if (err) console.log(err)
+        else personAttendCount = count
+      })
+      api.get('/api/attendance/person/' + process.env.TEST_ID)
+        .set('Accept', 'application/json')
+        .set('email', process.env.EMAIL)
+        .set('auth_token', process.env.AUTH_TOKEN)
+        .end((err, res) => {
+          expect(err).to.be.null
+          expect(res.status).to.eq(200)
+          expect(res.body.length).to.eq(personAttendCount)
           done()
         })
     })
