@@ -14,6 +14,9 @@
   },
   "keywords": [],
   "author": "",
+  "engines": {
+  "node": "6.2.2"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RedSwift/admin-dashboard/issues"
