@@ -22,7 +22,7 @@
           <td>{{singleAttend.notes}}</td>
         </tr>
       </table>
-      <div layout="row">
+      <div layout="row" layout-align="space-between">
         <md-button class="md-raised md-primary" href="/#/attendance/edit/{{attend._id}}">Edit</md-button>
         <md-button class="md-raised md-primary" ng-click="$ctrl.deleteAttend(attend._id)">Delete</md-button>
       </div>
