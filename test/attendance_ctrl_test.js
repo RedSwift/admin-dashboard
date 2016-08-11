@@ -118,10 +118,18 @@ describe('Valid actions with Attendance', () => {
         })
     })
   })
-  after(function (done) {
-    Attend.remove({_id: id}, function (err) {
-      if (err) console.log(err)
-      else done()
+  context('DELETE /api/attendance/:id', () => {
+    it('should delete attendance', (done) => {
+      api.delete('/api/attendance/' + id)
+        .set('Accept', 'application/json')
+        .set('email', process.env.EMAIL)
+        .set('auth_token', process.env.AUTH_TOKEN)
+        .end((err, res) => {
+          expect(err).to.be.null
+          expect(res.status).to.eq(201)
+          expect(res.body).to.eq('Delete Successful!')
+          done()
+        })
     })
   })
 })

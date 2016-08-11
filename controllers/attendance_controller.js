@@ -93,10 +93,18 @@ let getPersonAttend = function (req, res) {
   })
 }
 
+let deleteAttend = (req, res) => {
+  Attend.remove({_id: req.params.id}, (err) => {
+    if (err) return res.status(401).json({error: err})
+    else res.status(201).json('Delete Successful!')
+  })
+}
+
 module.exports = {
   newAttend: newAttend,
   getAttend: getAttend,
   updateAttend: updateAttend,
   showAttend: showAttend,
+  deleteAttend: deleteAttend,
   getPersonAttend: getPersonAttend
 }

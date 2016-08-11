@@ -24,7 +24,7 @@ describe('POST /signup', () => {
       })
   })
   after(function (done) {
-    User.remove({email: 'tester@gmail.com'}, function (err, res) {
+    User.remove({email: 'tester@gmail.com'}, function (err) {
       if (err) console.log(err)
       else done()
     })
