@@ -1,2 +1,8 @@
 <!DOCTYPE html>
-<h1>Show one person's attendance</h1>
+<h1>{{$ctrl.person[0].name}}'s attendance</h1>
+<div flex layout-align="center" ng-repeat="person in $ctrl.person">
+  {{person.date}}
+  {{person.score}}
+  {{person.notes}}
+</div>
+<!-- {{$ctrl.person}} -->

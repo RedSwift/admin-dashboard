@@ -42,7 +42,24 @@ let newAttend = (req, res) => {
 let getPersonAttend = function (req, res) {
   Attend.find({'people.person': req.params.id}, (err, personAttend) => {
     if (err) return res.status(401).json({error: err})
-    else res.status(200).json(personAttend)
+    else {
+      // process the array of objects - return date, score, notes based on person and his id
+      var personObj = []
+      for (let i = 0; i < personAttend.length; i++) {
+        for (let r = 0; r < personAttend[i].people.length; r++) {
+          if (String(personAttend[i].people[r].person) === req.params.id) {
+            personObj.push({
+              date: personAttend[i].date,
+              name: personAttend[i].people[r].name,
+              score: personAttend[i].people[r].score,
+              notes: personAttend[i].people[r].notes
+            })
+            break
+          }
+        }
+      }
+      res.status(200).json(personObj)
+    }
   })
 }
 
