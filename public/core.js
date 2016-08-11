@@ -20,6 +20,9 @@ angular.module('adminApp', ['ngMaterial', 'ngRoute'])
     .when('/attendance/overall', {
       template: '<attend-overall></attend-overall>'
     })
+    .when('/attendance/person/:id', {
+      template: '<person-attend></person-attend>'
+    })
     .when('/people', {
       template: '<people></people>'
     })

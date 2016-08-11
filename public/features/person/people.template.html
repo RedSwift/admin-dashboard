@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <h1>List of people</h1>
 <h3 ng-repeat="person in $ctrl.people">
-  {{person.name}}
-  <a href="http://localhost:3000/#/person/edit/{{person._id}}">Edit</a>
+  <div flex layout="row" layout-align="start center">
+  <md-button href="/#/attendance/person/{{person._id}}">{{person.name}}</md-button>
+  <md-button class="blue md-primary" href="/#/person/edit/{{person._id}}">Edit</md-button>
   <md-button class="blue md-primary" ng-click="$ctrl.deletePerson(person._id)">Delete</md-button>
+  </div>
 </h3>
 <hr>
 <span>Create New Person</span>

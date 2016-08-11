@@ -35,7 +35,7 @@ angular.module('adminApp')
           }
         }).then((res) => {
           console.log('submitted')
-          // $window.location.reload()
+          $window.location.href = '/#/attendance/overall'
         }, (err) => {
           console.log(err)
         })
