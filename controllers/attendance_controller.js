@@ -8,6 +8,13 @@ let getAttend = (req, res) => {
   })
 }
 
+let showAttend = (req, res) => {
+  Attend.findOne({_id: req.params.id}, (err, attend) => {
+    if (err) return res.status(401).json({error: err})
+    else res.status(200).json(attend)
+  })
+}
+
 let newAttend = (req, res) => {
   if (!req.body.date) return res.status(401).json({error: 'Date must not be empty'})
   if (!req.body.people) return res.status(401).json({error: 'Must have name and attendance'})
@@ -90,5 +97,6 @@ module.exports = {
   newAttend: newAttend,
   getAttend: getAttend,
   updateAttend: updateAttend,
+  showAttend: showAttend,
   getPersonAttend: getPersonAttend
 }
