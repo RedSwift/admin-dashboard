@@ -15,7 +15,7 @@
   "keywords": [],
   "author": "",
   "engines": {
-  "node": "6.2.2"
+    "node": "6.2.2"
   },
   "license": "ISC",
   "bugs": {
@@ -25,6 +25,7 @@
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "mongoose": "^4.5.8",
