@@ -16,5 +16,23 @@ angular.module('adminApp')
       }, (err) => {
         if (err) alert('Error connecting to server')
       })
+      this.editAttend = () => {
+        $http({
+          url: '/api/attendance/' + $routeParams.id,
+          method: 'PUT',
+          headers: {
+            email: $window.localStorage.email,
+            auth_token: $window.localStorage.auth_token
+          },
+          data: {
+            date: this.attend.date,
+            people: this.attend.people
+          }
+        }).then((res) => {
+          console.log('success!', res)
+        }, (err) => {
+          if (err) alert('Error connecting to server')
+        })
+      }
     }
   })

@@ -11,7 +11,13 @@
       <md-radio-group layout="row" ng-model="person.score">
         <md-radio-button value="Yes">Yes</md-radio-button>
         <md-radio-button value="No">No</md-radio-button>
+        <md-radio-button value="Partial">Partial</md-radio-button>
+        <md-radio-button value="Late">Late</md-radio-button>
         </md-radio-group>
+        <md-input-container class="marginLeft" flex>
+          <label>Notes</label>
+          <input ng-model="person.notes">
+        </md-input-container>
     </md-list-item>
   </md-list>
   <md-input-container>
@@ -19,3 +25,4 @@
     <input ng-model="person.score" disabled="true">
   </md-input-container>
 </div>
+<md-button class="blue md-primary" ng-click="$ctrl.editAttend()">Edit</md-button>
