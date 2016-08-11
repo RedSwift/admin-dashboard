@@ -57,6 +57,20 @@ describe('Valid actions with Attendance', () => {
         })
     })
   })
+  context('SHOW /api/attendance/:id', () => {
+    it(`should show one attendance`, (done) => {
+      api.get('/api/attendance/' + id)
+        .set('Accept', 'application/json')
+        .set('email', process.env.EMAIL)
+        .set('auth_token', process.env.AUTH_TOKEN)
+        .end((err, res) => {
+          expect(err).to.be.null
+          expect(res.status).to.eq(200)
+          expect(res.body.date).to.eq('08-Aug-16')
+          done()
+        })
+    })
+  })
   context('PUT /api/attendance/:id', () => {
     it(`should update attendance`, (done) => {
       api.put('/api/attendance/' + id)
