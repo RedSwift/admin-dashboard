@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<h1>All the Attendance</h1>
-<hr>
-<div ng-repeat="attend in $ctrl.attend track by $index">
-  <div flex layout="row">
-    <h3>{{attend.date}}</h3>
-    <md-button class="blue md-primary" href="/#/attendance/edit/{{attend._id}}">Edit</md-button>
-    <md-button class="blue md-primary" ng-click="$ctrl.deleteAttend(attend._id)">Delete</md-button>
+
+<div flex layout="column" layout-fill>
+  <side-nav></side-nav>
+  <div flex layout="column" class="conContainer">
+    <h1 class="text-center">All Attendance</h1>
+    <div ng-repeat="attend in $ctrl.attend track by $index">
+      <hr>
+      <div flex layout="row">
+        <span class="md-headline">Date: {{attend.date}}</span>
+      </div>
+      <br>
+      <table class="text-center" >
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Notes</th>
+        </tr>
+        <tr ng-repeat="singleAttend in attend.people | orderBy: '-score'">
+          <td>{{singleAttend.name}}</td>
+          <td>{{singleAttend.score}}</td>
+          <td>{{singleAttend.notes}}</td>
+        </tr>
+      </table>
+      <div layout="row">
+        <md-button class="md-raised md-primary" href="/#/attendance/edit/{{attend._id}}">Edit</md-button>
+        <md-button class="md-raised md-primary" ng-click="$ctrl.deleteAttend(attend._id)">Delete</md-button>
+      </div>
+
+      <!-- <div flex layout="row">
+        <h3>{{attend.date}}</h3>
+        <md-button class="md-raised md-primary" href="/#/attendance/edit/{{attend._id}}">Edit</md-button>
+        <md-button class="md-raised md-primary" ng-click="$ctrl.deleteAttend(attend._id)">Delete</md-button>
+      </div> -->
+      <!-- <div ng-repeat="singleAttend in attend.people | orderBy: '-score'">
+        {{singleAttend.name}}
+        {{singleAttend.score}}
+        {{singleAttend.notes}}
+      </div> -->
   </div>
-  <div ng-repeat="singleAttend in attend.people | orderBy: '-score'">
-    {{singleAttend.name}}
-    {{singleAttend.score}}
-    {{singleAttend.notes}}
-  </div>
-  <br>
+</div>
 </div>

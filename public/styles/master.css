@@ -18,6 +18,15 @@
   margin-top: 1em;
 }
 
-.floating {
-  float: right;
+.conContainer {
+  margin: 0 auto;
+  max-width: 50em;
+}
+
+table, th, td {
+    border: 1px solid pink;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
 }

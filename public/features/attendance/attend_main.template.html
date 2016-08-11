@@ -1,46 +1,26 @@
 <!DOCTYPE html>
-<div class="container" layout="column" layout-fill>
-  <md-toolbar tall layout="row">
-    <span class="md-padding" flex>Mission Trip</span>
-    <span class="md-padding" flex="66">Attendance</span>
-  </md-toolbar>
-
-  <div class="homeContainer" layout="row" flex>
-    <md-sidenav md-component-id="left" class="md-sidenav-left" md-is-locked-open="true" md-whiteframe="4dp">
-      <md-list>
+<div flex layout="column" layout-fill>
+  <side-nav></side-nav>
+  <div flex layout="column" class="conContainer">
+    <md-input-container>
+      <label>Date</label>
+      <input ng-model="$ctrl.date">
+    </md-input-container>
+    <md-list ng-repeat="person in $ctrl.people track by $index">
         <md-list-item>
-          <md-button href="#/attendance">
-            <span class="md-padding">Attendance</span>
-          </md-button>
+          <label>{{person.name}}</label>
+          <md-radio-group layout="row" class="marginLeft" ng-model="$ctrl.score[$index]">
+            <md-radio-button value="Yes">Yes</md-radio-button>
+            <md-radio-button value="No">No</md-radio-button>
+            <md-radio-button value="Partial">Partial</md-radio-button>
+            <md-radio-button value="Late">Late</md-radio-button>
+          </md-radio-group>
+          <md-input-container class="marginLeft" flex>
+            <label>Notes</label>
+            <input ng-model="$ctrl.notes[$index]">
+          </md-input-container>
         </md-list-item>
-        <md-list-item>
-          <md-button>
-            <span class="md-padding">Calendar</span>
-          </md-button>
-        </md-list-item>
-      </md-list>
-    </md-sidenav>
-    <md-content layout="column" flex>
-      <md-input-container>
-        <label>Date</label>
-        <input ng-model="$ctrl.date">
-      </md-input-container>
-      <md-list ng-repeat="person in $ctrl.people track by $index">
-          <md-list-item>
-            <label>{{person.name}}</label>
-            <md-radio-group layout="row" class="marginLeft" ng-model="$ctrl.score[$index]">
-              <md-radio-button value="Yes">Yes</md-radio-button>
-              <md-radio-button value="No">No</md-radio-button>
-              <md-radio-button value="Partial">Partial</md-radio-button>
-              <md-radio-button value="Late">Late</md-radio-button>
-            </md-radio-group>
-            <md-input-container class="marginLeft" flex>
-              <label>Notes</label>
-              <input ng-model="$ctrl.notes[$index]">
-            </md-input-container>
-          </md-list-item>
-      </md-list>
-      <md-button class="blue md-primary" ng-click="$ctrl.newAttend()">Submit Attendance</md-button>
-    </md-content>
+    </md-list>
+    <md-button class="md-raised md-primary" ng-click="$ctrl.newAttend()">Submit Attendance</md-button>
   </div>
 </div>
