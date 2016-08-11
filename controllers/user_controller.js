@@ -1,5 +1,19 @@
 const User = require('../models/user')
 
+const loggedIn = function (req, res, next) {
+  let userEmail = req.get('email')
+  let authToken = req.get('auth_token')
+
+  if (!userEmail || !authToken) return res.status(401).json({error: 'Unauthorized access'})
+
+  User.findOne({email: userEmail, auth_token: authToken}, (err, user) => {
+    if (err || !user) return res.status(401).json({error: 'Unauthorized access'})
+
+    req.currentUser = user
+    next()
+  })
+}
+
 const newUser = function (req, res) {
   if (!req.body.signup_token || req.body.signup_token !== process.env.SIGNUP_TOKEN) return res.status(401).json({message: `Invalid Signup Token`})
   else {
@@ -31,5 +45,6 @@ const login = function (req, res) {
 
 module.exports = {
   newUser: newUser,
-  login: login
+  login: login,
+  loggedIn: loggedIn
 }

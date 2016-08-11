@@ -1,4 +1,4 @@
-/* globals describe it context */
+/* globals describe it context after */
 const expect = require('chai').expect
 const supertest = require('supertest')
 require('../server')
@@ -11,13 +11,15 @@ Attend.count({}, (err, count) => {
   else attendCount = count
 })
 
-describe('GET, SHOW, POST, PUT, DELETE attendance', () => {
+describe('Valid actions with Attendance', () => {
   var id
   context('GET /api/attendance', () => {
     it('should allow get all attendance', function (done) {
       this.timeout(5000)
       api.get('/api/attendance')
         .set('Accept', 'application/json')
+        .set('email', process.env.EMAIL)
+        .set('auth_token', process.env.AUTH_TOKEN)
         .end((err, res) => {
           expect(err).to.be.a.null
           expect(res.status).to.eq(200)
@@ -31,6 +33,8 @@ describe('GET, SHOW, POST, PUT, DELETE attendance', () => {
       this.timeout(10000)
       api.post('/api/attendance/new')
         .set('Accept', 'application/json')
+        .set('email', process.env.EMAIL)
+        .set('auth_token', process.env.AUTH_TOKEN)
         .send({
           date: '08-Aug-16',
           people: [{

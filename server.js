@@ -4,7 +4,6 @@ const port = process.env.PORT || 3000
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-// const browserSync = require('browser-sync')
 const userCtrl = require('./controllers/user_controller')
 const personCtrl = require('./controllers/person_controller')
 const attendCtrl = require('./controllers/attendance_controller')
@@ -23,11 +22,6 @@ app.use(express.static(__dirname + '/bower_components'))
 app.use(morgan('dev'))
 
 app.listen(port, () => {
-  // browserSync({
-  //   proxy: 'localhost:' + port,
-  //   files: ['public/**/*.{js,css,html}'],
-  //   open: false
-  // })
   console.log(`Listening on port: ${port}`)
 })
 
@@ -39,11 +33,11 @@ app.get('/', (req, res) => {
 app.post('/api/signup', userCtrl.newUser)
 app.post('/api/login', userCtrl.login)
 
-app.get('/api/people', personCtrl.getPeople)
-app.get('/api/person/:id', personCtrl.getPerson)
-app.post('/api/person/new', personCtrl.newPerson)
-app.put('/api/person/:id', personCtrl.editPerson)
-app.delete('/api/person/:id', personCtrl.deletePerson)
+app.get('/api/people', userCtrl.loggedIn, personCtrl.getPeople)
+app.get('/api/person/:id', userCtrl.loggedIn, personCtrl.getPerson)
+app.post('/api/person/new', userCtrl.loggedIn, personCtrl.newPerson)
+app.put('/api/person/:id', userCtrl.loggedIn, personCtrl.editPerson)
+app.delete('/api/person/:id', userCtrl.loggedIn, personCtrl.deletePerson)
 
-app.get('/api/attendance', attendCtrl.getAttend)
-app.post('/api/attendance/new', attendCtrl.newAttend)
+app.get('/api/attendance', userCtrl.loggedIn, attendCtrl.getAttend)
+app.post('/api/attendance/new', userCtrl.loggedIn, attendCtrl.newAttend)
