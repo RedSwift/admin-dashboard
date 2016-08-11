@@ -27,12 +27,12 @@
       </md-input-container>
       <md-list ng-repeat="person in $ctrl.people track by $index">
           <md-list-item>
-            <label ng-value="{{person.name}}">{{person.name}}</label>
+            <label>{{person.name}}</label>
             <md-radio-group layout="row" class="marginLeft" ng-model="$ctrl.score[$index]">
-              <md-radio-button value="yes">Yes</md-radio-button>
-              <md-radio-button value="no">No</md-radio-button>
-              <md-radio-button value="partial">Partial</md-radio-button>
-              <md-radio-button value="late">Late</md-radio-button>
+              <md-radio-button value="Yes">Yes</md-radio-button>
+              <md-radio-button value="No">No</md-radio-button>
+              <md-radio-button value="Partial">Partial</md-radio-button>
+              <md-radio-button value="Late">Late</md-radio-button>
             </md-radio-group>
             <md-input-container class="marginLeft" flex>
               <label>Notes</label>

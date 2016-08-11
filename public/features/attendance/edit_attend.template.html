@@ -1,2 +1,21 @@
 <!DOCTYPE html>
 <h1>Edit Attendance</h1>
+<md-input-container>
+  <label>Date</label>
+  <input ng-model="$ctrl.attend.date">
+</md-input-container>
+<div ng-repeat="person in $ctrl.attend.people track by $index">
+  <md-list>
+    <md-list-item>
+      {{person.name}}
+      <md-radio-group layout="row" ng-model="person.score">
+        <md-radio-button value="Yes">Yes</md-radio-button>
+        <md-radio-button value="No">No</md-radio-button>
+        </md-radio-group>
+    </md-list-item>
+  </md-list>
+  <md-input-container>
+    <label>Current Attendance</label>
+    <input ng-model="person.score" disabled="true">
+  </md-input-container>
+</div>
