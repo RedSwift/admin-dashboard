@@ -4,8 +4,12 @@ angular.module('adminApp')
     templateUrl: 'features/person/people.template.html',
     controller: function ($http, $window, $scope) {
       $http({
-        url: 'http://localhost:3000/api/people',
-        method: 'GET'
+        url: '/api/people',
+        method: 'GET',
+        headers: {
+          email: $window.localStorage.email,
+          auth_token: $window.localStorage.auth_token
+        }
       }).then((res) => {
         this.people = res.data
       }, (err) => {
@@ -14,8 +18,12 @@ angular.module('adminApp')
 
       this.newPerson = () => {
         $http({
-          url: 'http://localhost:3000/api/person/new',
+          url: '/api/person/new',
           method: 'POST',
+          headers: {
+            email: $window.localStorage.email,
+            auth_token: $window.localStorage.auth_token
+          },
           data: {
             name: this.name
           }
@@ -26,8 +34,12 @@ angular.module('adminApp')
 
       this.deletePerson = (id) => {
         $http({
-          url: 'http://localhost:3000/api/person/' + id,
-          method: 'DELETE'
+          url: '/api/person/' + id,
+          method: 'DELETE',
+          headers: {
+            email: $window.localStorage.email,
+            auth_token: $window.localStorage.auth_token
+          }
         }).then((res) => {
           console.log('success!')
           $window.location.reload()

@@ -4,8 +4,12 @@ angular.module('adminApp')
     templateUrl: 'features/person/edit_person.template.html',
     controller: function ($http, $routeParams, $window) {
       $http({
-        url: 'http://localhost:3000/api/person/' + $routeParams.id,
-        method: 'GET'
+        url: '/api/person/' + $routeParams.id,
+        method: 'GET',
+        headers: {
+          email: $window.localStorage.email,
+          auth_token: $window.localStorage.auth_token
+        }
       }).then((res) => {
         this.newName = res.data.name
       }, (err) => {
@@ -14,13 +18,17 @@ angular.module('adminApp')
 
       this.editPerson = function () {
         $http({
-          url: 'http://localhost:3000/api/person/' + $routeParams.id,
+          url: '/api/person/' + $routeParams.id,
           method: 'PUT',
+          headers: {
+            email: $window.localStorage.email,
+            auth_token: $window.localStorage.auth_token
+          },
           data: {
             name: this.newName
           }
         }).then((res) => {
-          $window.location.href = 'http://localhost:3000/#/people'
+          $window.location.href = '/#/people'
         }, (err) => {
           if (err) alert('Error in connecting to server')
         })

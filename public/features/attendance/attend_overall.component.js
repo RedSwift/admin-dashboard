@@ -2,13 +2,16 @@
 angular.module('adminApp')
   .component('attendOverall', {
     templateUrl: 'features/attendance/attend_overall.template.html',
-    controller: function ($http) {
+    controller: function ($http, $window) {
       $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/attendance'
+        url: '/api/attendance',
+        headers: {
+          email: $window.localStorage.email,
+          auth_token: $window.localStorage.auth_token
+        }
       }).then((res) => {
         this.attend = res.data
-        console.log(res.data)
       }, (err) => {
         if (err) alert('Error connecting to server')
       })

@@ -6,7 +6,7 @@ angular.module('adminApp')
       this.login = function () {
         userEmail = this.email
         $http({
-          url: 'http://localhost:3000/api/login',
+          url: '/api/login',
           method: 'POST',
           data: {
             email: this.email,
@@ -15,7 +15,7 @@ angular.module('adminApp')
         }).then(function (res) {
           $window.localStorage.email = userEmail
           $window.localStorage.auth_token = res.data.auth_token
-          $window.location.href = 'http://localhost:3000/#/home'
+          $window.location.href = '/#/home'
         }, function (err) {
           console.log('error', err)
         })

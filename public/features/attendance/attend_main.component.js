@@ -5,7 +5,11 @@ angular.module('adminApp')
       this.notes = ''
       $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/people'
+        url: '/api/people',
+        headers: {
+          email: $window.localStorage.email,
+          auth_token: $window.localStorage.auth_token
+        }
       }).then((res) => {
         this.people = res.data
       })
@@ -20,7 +24,11 @@ angular.module('adminApp')
         }
         $http({
           method: 'POST',
-          url: 'http://localhost:3000/api/attendance/new',
+          url: '/api/attendance/new',
+          headers: {
+            email: $window.localStorage.email,
+            auth_token: $window.localStorage.auth_token
+          },
           data: {
             date: this.date,
             people: this.allPeople
