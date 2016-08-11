@@ -3,6 +3,7 @@ angular.module('adminApp')
   .component('attendOverall', {
     templateUrl: 'features/attendance/attend_overall.template.html',
     controller: function ($http, $window) {
+      if (!$window.localStorage.email || !$window.localStorage.auth_token) $window.location.href = '/#/'
       $http({
         method: 'GET',
         url: '/api/attendance',

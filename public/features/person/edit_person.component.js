@@ -3,6 +3,7 @@ angular.module('adminApp')
   .component('editPerson', {
     templateUrl: 'features/person/edit_person.template.html',
     controller: function ($http, $routeParams, $window) {
+      if (!$window.localStorage.email || !$window.localStorage.auth_token) $window.location.href = '/#/'
       $http({
         url: '/api/person/' + $routeParams.id,
         method: 'GET',

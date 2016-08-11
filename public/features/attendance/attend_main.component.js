@@ -2,6 +2,7 @@ angular.module('adminApp')
   .component('attendMain', {
     templateUrl: 'features/attendance/attend_main.template.html',
     controller: function ($http, $window, $scope) {
+      if (!$window.localStorage.email || !$window.localStorage.auth_token) $window.location.href = '/#/'
       this.notes = ''
       $http({
         method: 'GET',
