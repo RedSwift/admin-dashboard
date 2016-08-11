@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <div layout="column" layout-align="center center" class="md-padding">
-  <h1 flex class="md-padding text-center">Welcome!</h1>
-  <md-input-container>
-    <label>Email</label>
-    <input ng-model="$ctrl.email">
-  </md-input-container>
-  <md-input-container>
-    <label>Password</label>
-    <input ng-model="$ctrl.password" type="password">
-  </md-input-container>
-  <md-button class="md-raised md-primary" ng-click="$ctrl.login()">Login</md-button>
+    <h1 flex class="md-padding text-center md-display-2">Welcome!</h1>
+  <div flex layout="column" class="md-padding marginTop" md-whiteframe="4">
+    <md-input-container>
+      <label>Email</label>
+      <input ng-model="$ctrl.email">
+    </md-input-container>
+    <md-input-container>
+      <label>Password</label>
+      <input ng-model="$ctrl.password" type="password">
+    </md-input-container>
+    <div flex layout="row">
+      <md-button class="md-raised md-primary" ng-click="$ctrl.login()">Login</md-button>
+      <md-button class="md-raised md-primary" href="/#/signup">Sign Up</md-button>
+    </div>
+  </div>
+
 </div>

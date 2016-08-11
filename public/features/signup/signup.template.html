@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<div layout="column" layout-align="center center" class="md-paddin">
-  <h1 flex class="md-padding text-center">Sign Up</h1>
-  <h3>{{ $ctrl.error }}</h3>
-  <md-input-container>
-    <label>Name</label>
-    <input ng-model="$ctrl.name">
-  </md-input-container>
-  <md-input-container>
-    <label>Email</label>
-    <input ng-model="$ctrl.email">
-  </md-input-container>
-  <md-input-container>
-    <label>Password</label>
-    <input ng-model="$ctrl.password" type="password">
-  </md-input-container>
-  <md-input-container>
-    <label>Password Confirmation</label>
-    <input ng-model="$ctrl.confirm" type="password">
-  </md-input-container>
-  <md-input-container>
-    <label>Token</label>
-    <input ng-model="$ctrl.token">
-  </md-input-container>
-  <md-button class="md-raised md-primary" ng-click="$ctrl.signup()">Sign Up</md-button>
+<div flex layout="column" layout-align="center center" class="md-padding">
+  <h1 flex class="md-padding md-display-2">Please fill in the form below</h1>
+  {{$ctrl.error}}
+  <form md-whiteframe="4" class="md-padding">
+    <div flex layout="row">
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="$ctrl.name">
+      </md-input-container>
+      <md-input-container>
+        <label>Email</label>
+        <input ng-model="$ctrl.email">
+      </md-input-container>
+    </div>
+    <div flex layout="row">
+      <md-input-container>
+        <label>Password</label>
+        <input ng-model="$ctrl.password" type="password">
+      </md-input-container>
+      <md-input-container>
+        <label>Password Confirmation</label>
+        <input ng-model="$ctrl.confirm" type="password">
+      </md-input-container>
+    </div>
+    <div flex layout="row">
+      <md-input-container>
+        <label>Token</label>
+        <input ng-model="$ctrl.token">
+      </md-input-container>
+    </div>
+    <div flex layout="row" layout-align="space-between">
+    <md-button class="md-raised md-primary" href="/#/">Back</md-button>
+    <md-button class="md-raised md-primary" ng-click="$ctrl.signup()">Sign Up</md-button>
+    </div>
+  </form>
 </div>

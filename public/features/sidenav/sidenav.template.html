@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<div layout="column" layout-fill>
+  <md-toolbar class="md-tall" layout="row" layout-align="center center">
+    <md-button ng-click="$ctrl.openLeftMenu()">Open</md-button>
+    <h1 flex class="md-padding md-display-2 text-center">{{$ctrl.url}}</h1>
+  </md-toolbar>
+  <md-sidenav flex layout="row" layout-align="center start" md-component-id="left" class="md-sidenav-left" md-is-locked-open="$ctrl.isSidenavOpen" md-whiteframe="4">
+    <div layout="column" flex>
+    <md-toolbar class="md-tall" flex layout-align="center center">Navigation</md-toolbar>
+    <md-button class="md-raised md-padding md-accent" href="/#/attendance/overall">Overall Attendance</md-button>
+    <md-button class="md-raised md-padding md-accent" href="/#/attendance">New Attendance</md-button>
+    <md-button class="md-raised md-padding md-accent" href="/#/people">View people</md-button>
+    </div>
+  </md-sidenav>
+</div>

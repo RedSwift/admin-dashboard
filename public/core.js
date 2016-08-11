@@ -3,7 +3,7 @@ angular.module('adminApp', ['ngMaterial', 'ngRoute'])
   .config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('pink')
-      .accentPalette('blue')
+      .accentPalette('brown')
     $routeProvider
     .when('/', {
       template: '<login></login>'
