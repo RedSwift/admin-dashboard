@@ -29,7 +29,7 @@ angular.module('adminApp')
             people: this.attend.people
           }
         }).then((res) => {
-          console.log('success!', res)
+          $window.location.reload()
         }, (err) => {
           if (err) alert('Error connecting to server')
         })

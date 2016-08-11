@@ -15,5 +15,19 @@ angular.module('adminApp')
       }, (err) => {
         if (err) alert('Error connecting to server')
       })
+      this.deleteAttend = (id) => {
+        $http({
+          url: '/api/attendance/' + id,
+          method: 'DELETE',
+          headers: {
+            email: $window.localStorage.email,
+            auth_token: $window.localStorage.auth_token
+          }
+        }).then((res) => {
+          $window.location.reload()
+        }, (err) => {
+          if (err) alert('Error connecting to server')
+        })
+      }
     }
   })

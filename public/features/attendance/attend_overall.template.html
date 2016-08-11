@@ -5,6 +5,7 @@
   <div flex layout="row">
     <h3>{{attend.date}}</h3>
     <md-button class="blue md-primary" href="/#/attendance/edit/{{attend._id}}">Edit</md-button>
+    <md-button class="blue md-primary" ng-click="$ctrl.deleteAttend(attend._id)">Delete</md-button>
   </div>
   <div ng-repeat="singleAttend in attend.people | orderBy: '-score'">
     {{singleAttend.name}}
