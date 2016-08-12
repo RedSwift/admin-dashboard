@@ -1,4 +1,4 @@
-/* globals describe it context after */
+/* globals describe it context */
 const expect = require('chai').expect
 const supertest = require('supertest')
 require('../server')

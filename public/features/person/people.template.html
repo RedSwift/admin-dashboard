@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<h1>List of people</h1>
-<h3 ng-repeat="person in $ctrl.people">
-  <div flex layout="row" layout-align="start center">
-  <md-button href="/#/attendance/person/{{person._id}}">{{person.name}}</md-button>
-  <md-button class="blue md-primary" href="/#/person/edit/{{person._id}}">Edit</md-button>
-  <md-button class="blue md-primary" ng-click="$ctrl.deletePerson(person._id)">Delete</md-button>
-  </div>
-</h3>
-<hr>
-<span>Create New Person</span>
-<br>
-<md-input-container>
-  <label>Name</label>
-  <input type="text" ng-model="$ctrl.name">
-</md-input-container>
-<md-button class="blue md-primary" ng-click="$ctrl.newPerson()">New Person</md-button>
+<div layout="column" flex >
+  <side-nav></side-nav>
+  <md-content layout="column" flex class="conContainer">
+    <h1 class="text-center">List of people</h1>
+    <div flex layout="row" layout-align="start center" ng-repeat="person in $ctrl.people">
+      <md-button>{{person.name}}</md-button>
+      <md-button class="md-raised md-primary" href="/#/person/edit/{{person._id}}">Edit</md-button>
+      <md-button class="md-raised md-primary" ng-click="$ctrl.deletePerson(person._id)">Delete</md-button>
+      <md-button class="md-raised md-primary" href="/#/attendance/person/{{person._id}}">View Attendance </md-button>
+    </div>
+    <div class="conContainer">
+    <md-input-container>
+      <label>Add New Person</label>
+      <input type="text" ng-model="$ctrl.name">
+    </md-input-container>
+    <md-button class="md-raised md-primary" ng-click="$ctrl.newPerson()">New Person</md-button>
+    </div>
+  </md-content>
+</div>

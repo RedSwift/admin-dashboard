@@ -3,6 +3,7 @@ angular.module('adminApp')
   .component('editAttend', {
     templateUrl: 'features/attendance/edit_attend.template.html',
     controller: function ($http, $window, $routeParams) {
+      if (!$window.localStorage.email || !$window.localStorage.auth_token) $window.location.href = '/#/'
       this.specialValue = 'Yes'
       $http({
         url: '/api/attendance/' + $routeParams.id,

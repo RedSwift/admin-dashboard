@@ -3,6 +3,7 @@ angular.module('adminApp')
   .component('people', {
     templateUrl: 'features/person/people.template.html',
     controller: function ($http, $window, $scope) {
+      if (!$window.localStorage.email || !$window.localStorage.auth_token) $window.location.href = '/#/'
       $http({
         url: '/api/people',
         method: 'GET',

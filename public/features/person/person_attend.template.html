@@ -1,7 +1,26 @@
 <!DOCTYPE html>
-<h1>{{$ctrl.person[0].name}}'s attendance</h1>
-<div flex layout-align="center" ng-repeat="person in $ctrl.person">
-  {{person.date}}
-  {{person.score}}
-  {{person.notes}}
+<div flex layout="column" layout-fill>
+  <side-nav></side-nav>
+  <div flex layout="column" class="conContainer">
+    <h1 class="text-center">{{$ctrl.person[0].name}}'s attendance'</h1>
+    <div ng-repeat="person in $ctrl.person">
+      <br>
+      <hr>
+      <br>
+      <table class="text-center">
+        <tr>
+          <th>Date</th>
+          <th>Score</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>{{person.date}}</td>
+          <td>{{person.score}}</td>
+          <td>{{person.notes}}</td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <md-button class="md-raised md-primary" href="/#/people">Back</md-button>
+  </div>
 </div>
