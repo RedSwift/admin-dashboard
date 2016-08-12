@@ -8,7 +8,7 @@ angular.module('adminApp')
           return
         } else {
           $http({
-            url: 'http://localhost:3000/api/signup',
+            url: '/api/signup',
             method: 'POST',
             data: {
               name: this.name,
@@ -17,7 +17,7 @@ angular.module('adminApp')
               signup_token: this.token
             }
           }).then(function (res) {
-            $window.location.href = 'http://localhost:3000/#/login'
+            $window.location.href = '/#/login'
           }, function (err) {
             console.log('error', err)
           })
