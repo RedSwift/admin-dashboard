@@ -14,7 +14,6 @@ angular.module('adminApp')
               name: this.name,
               email: this.email,
               password: this.password
-              // signup_token: this.token
             }
           }).then(function (res) {
             $window.location.href = '/#/login'
