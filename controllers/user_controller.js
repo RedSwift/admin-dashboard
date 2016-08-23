@@ -15,8 +15,8 @@ const loggedIn = function (req, res, next) {
 }
 
 const newUser = function (req, res) {
-  if (!req.body.signup_token || req.body.signup_token !== process.env.SIGNUP_TOKEN) return res.status(401).json({message: `Invalid Signup Token`})
-  else {
+  // if (!req.body.signup_token || req.body.signup_token !== process.env.SIGNUP_TOKEN) return res.status(401).json({message: `Invalid Signup Token`})
+  // else {
     let makeUser = new User()
     makeUser.name = req.body.name
     makeUser.email = req.body.email
@@ -26,7 +26,7 @@ const newUser = function (req, res) {
       if (err) res.status(401).json(`Error occured while saving: ${err}`)
       else res.status(201).json('success')
     })
-  }
+  // }
 }
 
 const login = function (req, res) {
